@@ -1,0 +1,12 @@
+{
+  "name": "beauty-hub",
+  "private": true,
+  "workspaces": [
+    "web",
+    "studio"
+  ],
+  "scripts": {
+    "dev:web": "npm --prefix web run dev",
+    "dev:studio": "npm --prefix studio run dev"
+  }
+}

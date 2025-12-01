@@ -1,0 +1,20 @@
+# Node modules
+node_modules/
+**/node_modules/
+
+# Build outputs
+web/.next/
+web/out/
+studio/dist/
+
+# Logs
+*.log
+
+# Environment files
+.env
+.env.local
+.env.development
+.env.production
+
+# Sanity specific
+studio/.sanity/

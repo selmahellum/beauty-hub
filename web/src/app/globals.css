@@ -1,0 +1,24 @@
+.container {
+  background-color: #fff5f8; /* Pink background */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: Geist;
+  color: #7d1439;
+  text-align: center;
+  gap: 2px;
+}
+
+.title {
+  font-size: 4rem;
+  font-weight: bold;
+
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  font-weight: 200;
+}
