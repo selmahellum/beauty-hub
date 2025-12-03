@@ -1,24 +1,433 @@
-.container {
-  background-color: #fff5f8; /* Pink background */
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-family: Geist;
-  color: #7d1439;
-  text-align: center;
-  gap: 2px;
-}
-
-.title {
-  font-size: 4rem;
-  font-weight: bold;
-
+* {
+  box-sizing: border-box;
+  padding: 0;
   margin: 0;
 }
 
-.subtitle {
+:root {
+  --pink-light: #fff5f8;
+  --pink-medium: #ffd6e8;
+  --pink-main: #ff9ec5;
+  --pink-soft: #ffb3d1;
+  --maroon-dark: #8b1538;
+  --maroon-medium: #a01a42;
+  --maroon-light: #b81f4c;
+  --gold: #ffd700;
+  --gold-light: #fff8dc;
+  --snow: #ffffff;
+  --white: #ffffff;
+  --text-dark: #2d1b1f;
+  --text-light: #5a3a42;
+  --shadow: rgba(139, 21, 56, 0.15);
+  --shadow-hover: rgba(139, 21, 56, 0.25);
+}
+
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  background: var(--pink-light);
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 80px,
+    rgba(255, 158, 197, 0.1) 80px,
+    rgba(255, 158, 197, 0.1) 160px
+  );
+  min-height: 100vh;
+  color: var(--text-dark);
+  line-height: 1.6;
+  position: relative;
+}
+
+body::before {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
   font-size: 1.5rem;
-  font-weight: 200;
+  opacity: 0.1;
+  pointer-events: none;
+  z-index: 0;
+  animation: float 20s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+
+/* Tabs Navigation */
+.tabs {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  border-bottom: 3px solid var(--maroon-dark);
+  padding-bottom: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.tab {
+  padding: 0.875rem 2rem;
+  text-decoration: none;
+  color: var(--white);
+  font-weight: 600;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+  background: var(--maroon-dark);
+  border: 2px solid var(--maroon-medium);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(139, 21, 56, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tab-icon {
+  font-size: 1.1rem;
+  transition: transform 0.3s ease;
+}
+
+.tab:hover .tab-icon {
+  transform: scale(1.1);
+}
+
+.tab:hover {
+  background: var(--maroon-medium);
+  color: var(--white);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(139, 21, 56, 0.4);
+  border-color: var(--maroon-light);
+}
+
+.tab:hover::before {
+  opacity: 1;
+}
+
+.tab.active {
+  background: linear-gradient(
+    135deg,
+    var(--maroon-dark) 0%,
+    var(--maroon-medium) 100%
+  );
+  color: var(--white);
+  border-color: var(--maroon-light);
+  box-shadow: 0 4px 20px rgba(139, 21, 56, 0.5);
+  transform: translateY(-2px);
+}
+
+.tab.active::before {
+  opacity: 1;
+}
+
+.tab.active .tab-icon {
+  transform: scale(1.15);
+}
+
+/* Homepage */
+.homepage-content {
+  text-align: center;
+}
+
+.title {
+  font-family: var(--font-playfair), serif;
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: var(--maroon-dark);
+  text-shadow: 2px 2px 4px var(--shadow);
+  letter-spacing: 0.02em;
+}
+
+.intro {
+  font-size: 1.25rem;
+  color: var(--text-light);
+  margin-bottom: 3rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.8;
+}
+
+.featured-section {
+  margin-top: 4rem;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  color: var(--maroon-dark);
+  text-align: center;
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  font-family: var(--font-playfair), serif;
+}
+
+/* Cards Grid */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.card {
+  background: var(--white);
+  border-radius: 20px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px var(--shadow);
+  display: flex;
+  flex-direction: column;
+  border: 2px solid var(--pink-main);
+  position: relative;
+}
+
+.card::before {
+  content: '✨';
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  font-size: 1.2rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 24px var(--shadow-hover);
+  border-color: var(--maroon-dark);
+}
+
+.card:hover::before {
+  opacity: 0.8;
+}
+
+.card-image-wrapper {
+  width: 100%;
+  height: 250px;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    135deg,
+    var(--pink-main) 0%,
+    var(--pink-soft) 50%,
+    var(--gold-light) 100%
+  );
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .card-image {
+  transform: scale(1.05);
+}
+
+.card-image-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    135deg,
+    var(--pink-main) 0%,
+    var(--pink-soft) 100%
+  );
+}
+
+.card-placeholder-icon {
+  font-size: 4rem;
+  opacity: 0.5;
+}
+
+.card-content {
+  padding: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: var(--maroon-dark);
+  line-height: 1.3;
+}
+
+.card-intro {
+  color: var(--text-light);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  flex-grow: 1;
+}
+
+/* Page Content */
+.page-content {
+  text-align: center;
+}
+
+.page-title {
+  font-family: var(--font-playfair), serif;
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  color: var(--maroon-dark);
+  letter-spacing: 0.02em;
+}
+
+.empty-state {
+  font-size: 1.25rem;
+  color: var(--text-light);
+  padding: 3rem;
+  background: var(--white);
+  border-radius: 20px;
+  box-shadow: 0 4px 16px var(--shadow);
+}
+
+/* Article/Tutorial Detail Pages */
+.article-content,
+.tutorial-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.article-detail,
+.tutorial-detail {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 3rem;
+  box-shadow: 0 4px 24px var(--shadow);
+  border: 3px solid var(--pink-main);
+  position: relative;
+}
+
+.article-image-wrapper,
+.tutorial-image-wrapper {
+  width: 100%;
+  height: 400px;
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 16px var(--shadow);
+}
+
+.article-image,
+.tutorial-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.article-title,
+.tutorial-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: var(--maroon-dark);
+  line-height: 1.2;
+  font-family: var(--font-playfair), serif;
+}
+
+.article-intro,
+.tutorial-intro {
+  font-size: 1.25rem;
+  color: var(--text-light);
+  margin-bottom: 2rem;
+  line-height: 1.8;
+  font-style: italic;
+}
+
+.article-body {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-dark);
+  margin-bottom: 2rem;
+}
+
+.article-body p {
+  margin-bottom: 1.5rem;
+}
+
+.article-author,
+.tutorial-author {
+  font-size: 1rem;
+  color: var(--text-light);
+  font-style: italic;
+  padding-top: 2rem;
+  border-top: 2px solid var(--pink-main);
+  position: relative;
+}
+
+.article-author::before,
+.tutorial-author::before {
+  content: '✨';
+  margin-right: 0.5rem;
+  opacity: 0.6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .page-title {
+    font-size: 2rem;
+    font-family: var(--font-playfair), serif;
+  }
+
+  .cards-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .article-detail,
+  .tutorial-detail {
+    padding: 2rem 1.5rem;
+  }
+
+  .article-title,
+  .tutorial-title {
+    font-size: 2rem;
+    font-family: var(--font-playfair), serif;
+  }
+
+  .tabs {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .tab {
+    text-align: center;
+  }
 }
