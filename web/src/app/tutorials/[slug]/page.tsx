@@ -39,11 +39,10 @@ export default async function TutorialPage({
           <h1 className="tutorial-title">{tutorial.title}</h1>
           {tutorial.intro && <p className="tutorial-intro">{tutorial.intro}</p>}
           {tutorial.author && (
-            <p className="tutorial-author">By {tutorial.author.name}</p>
+            <p className="tutorial-author">Skrevet av {tutorial.author.name}</p>
           )}
         </article>
       </div>
     </div>
   );
 }
-
