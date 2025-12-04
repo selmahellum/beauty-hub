@@ -85,7 +85,7 @@ body::before {
 }
 
 .tab {
-  padding: 0.875rem 2rem;
+  padding: 0.875rem 1.5rem;
   text-decoration: none;
   color: var(--white);
   font-weight: 600;
@@ -98,7 +98,10 @@ body::before {
   box-shadow: 0 2px 8px rgba(139, 21, 56, 0.3);
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .tab-icon {
@@ -397,6 +400,14 @@ body::before {
 
 /* Responsive */
 @media (max-width: 768px) {
+  .tabs {
+    gap: 0.5rem;
+  }
+
+  .tab {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9rem;
+  }
   .title {
     font-size: 2.5rem;
   }
@@ -421,7 +432,10 @@ body::before {
     font-size: 2rem;
     font-family: var(--font-playfair), serif;
   }
+}
 
+/* Only switch tabs to column on very small screens */
+@media (max-width: 480px) {
   .tabs {
     flex-direction: column;
     align-items: stretch;
@@ -429,5 +443,6 @@ body::before {
 
   .tab {
     text-align: center;
+    justify-content: center;
   }
 }

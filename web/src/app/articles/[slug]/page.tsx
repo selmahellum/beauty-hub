@@ -46,11 +46,10 @@ export default async function ArticlePage({
             </div>
           )}
           {article.author && (
-            <p className="article-author">By {article.author.name}</p>
+            <p className="article-author">Skrevet av {article.author.name}</p>
           )}
         </article>
       </div>
     </div>
   );
 }
-
