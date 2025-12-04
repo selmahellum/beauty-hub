@@ -381,10 +381,12 @@ body::before {
 .tutorial-title {
   font-size: 2.5rem;
   font-weight: 700;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
+  margin-top: 1.5rem;
   color: var(--maroon-dark);
   line-height: 1.2;
   font-family: var(--font-playfair), serif;
+  text-align: center;
 }
 
 .article-intro,
@@ -734,6 +736,10 @@ body::before {
   .tutorial-title {
     font-size: 2rem;
     font-family: var(--font-playfair), serif;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    width: 100%;
   }
 
   .article-meta,
