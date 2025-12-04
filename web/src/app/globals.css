@@ -27,13 +27,13 @@ body {
     -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
     'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   background: var(--pink-light);
-  background-image: repeating-linear-gradient(
+  /*background-image: repeating-linear-gradient(
     -45deg,
     transparent,
     transparent 80px,
     rgba(255, 158, 197, 0.1) 80px,
     rgba(255, 158, 197, 0.1) 160px
-  );
+  );*/
   min-height: 100vh;
   color: var(--text-dark);
   line-height: 1.6;
@@ -76,16 +76,23 @@ body::before {
 .tabs {
   display: flex;
   gap: 1rem;
-  margin-bottom: 3rem;
-  border-bottom: 3px solid var(--maroon-dark);
-  padding-bottom: 1rem;
+  padding-bottom: 1.5rem;
   justify-content: center;
   flex-wrap: wrap;
   position: relative;
 }
 
+.squiggle {
+  width: 100%;
+  height: 12px;
+  margin: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 12' preserveAspectRatio='none'%3E%3Cpath d='M0 6 Q10 0 20 6 T40 6' stroke='%238b1538' stroke-width='2.5' fill='none'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-size: 40px 12px;
+}
+
 .tab {
-  padding: 0.875rem 1.5rem;
+  padding: 0.5rem 1.5rem;
   text-decoration: none;
   color: var(--white);
   font-weight: 600;
@@ -152,6 +159,7 @@ body::before {
 
 .title {
   font-family: var(--font-playfair), serif;
+  margin-top: 3rem;
   font-size: 3.5rem;
   font-weight: 700;
   margin-bottom: 1.5rem;
@@ -305,6 +313,24 @@ body::before {
   margin-bottom: 3rem;
   color: var(--maroon-dark);
   letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.page-title::before,
+.page-title::after {
+  content: '';
+  flex: 0 0 100px;
+  height: 12px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 12' preserveAspectRatio='none'%3E%3Cpath d='M0 6 Q10 0 20 6 T40 6 T60 6 T80 6' stroke='%238b1538' stroke-width='2.5' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.page-title::after {
+  transform: scaleX(-1);
 }
 
 .empty-state {
@@ -329,7 +355,7 @@ body::before {
   border-radius: 20px;
   padding: 3rem;
   box-shadow: 0 4px 24px var(--shadow);
-  border: 3px solid var(--pink-main);
+  border: 2px solid var(--pink-medium);
   position: relative;
 }
 
@@ -381,21 +407,292 @@ body::before {
   margin-bottom: 1.5rem;
 }
 
-.article-author,
-.tutorial-author {
-  font-size: 1rem;
-  color: var(--text-light);
-  font-style: italic;
+.article-meta,
+.tutorial-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 3rem;
   padding-top: 2rem;
-  border-top: 2px solid var(--pink-main);
+  flex-wrap: wrap;
+  gap: 1rem;
   position: relative;
 }
 
-.article-author::before,
-.tutorial-author::before {
-  content: '✨';
-  margin-right: 0.5rem;
-  opacity: 0.6;
+.article-meta::before,
+.tutorial-meta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 12px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 12' preserveAspectRatio='none'%3E%3Cpath d='M0 6 Q10 0 20 6 T40 6' stroke='%23ff9ec5' stroke-width='2.5' fill='none'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-size: 40px 12px;
+}
+
+/* Author Info */
+.author-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.author-image-wrapper {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--pink-medium);
+  box-shadow: 0 2px 8px rgba(255, 158, 197, 0.3);
+  flex-shrink: 0;
+}
+
+.author-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.author-name {
+  font-size: 1rem;
+  color: var(--maroon-dark);
+  font-weight: 600;
+}
+
+/* Publish Date */
+.publish-date {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.25rem;
+}
+
+.publish-label {
+  font-size: 0.8rem;
+  color: var(--text-light);
+  font-style: italic;
+}
+
+.date-value {
+  font-size: 0.9rem;
+  color: var(--maroon-dark);
+  font-weight: 500;
+}
+
+/* Tutorial Steps */
+.tutorial-steps {
+  margin-top: 3rem;
+  padding-top: 3rem;
+  position: relative;
+}
+
+.tutorial-steps::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 12px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 12' preserveAspectRatio='none'%3E%3Cpath d='M0 6 Q10 0 20 6 T40 6' stroke='%23ff9ec5' stroke-width='2.5' fill='none'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-size: 40px 12px;
+}
+
+.tutorial-steps-title {
+  font-family: var(--font-playfair), serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--maroon-dark);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.tutorial-step {
+  display: flex;
+  gap: 1.5rem;
+  padding-bottom: 2rem;
+  position: relative;
+}
+
+/* Vertical line connecting steps */
+.tutorial-step::before {
+  content: '';
+  position: absolute;
+  left: 17px;
+  top: 36px;
+  bottom: 0;
+  width: 2px;
+  background: var(--maroon-light);
+}
+
+/* Hide line on last step */
+.tutorial-step:last-child::before {
+  display: none;
+}
+
+.tutorial-step-number {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--maroon-dark);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-playfair), serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1;
+  padding-bottom: 5px;
+  position: relative;
+  z-index: 1;
+  border: 2px solid var(--maroon-light);
+  box-sizing: border-box;
+}
+
+.tutorial-step-content {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  align-items: center;
+}
+
+.tutorial-step-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.tutorial-step-title {
+  font-family: var(--font-playfair), serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--maroon-dark);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.tutorial-step-description {
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.tutorial-step-products {
+  margin: 0;
+  background: var(--pink-light);
+  padding: 1rem;
+  border-radius: 12px;
+}
+
+.tutorial-step-products-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--maroon-dark);
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.tutorial-step-products-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Product Card */
+.product-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.product-card:hover {
+  opacity: 0.85;
+}
+
+.product-card-content {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.product-card-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.product-brand {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--maroon-dark);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-bottom: 0.15rem;
+}
+
+.product-link-icon {
+  font-size: 0.85rem;
+  color: var(--pink-main);
+  flex-shrink: 0;
+}
+
+.product-card:hover .product-link-icon {
+  color: var(--maroon-dark);
+}
+
+.product-name {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-dark);
+  display: block;
+}
+
+.product-card-image-wrapper {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.product-card-image {
+  max-height: 56px;
+  max-width: 56px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.tutorial-step-image-wrapper {
+  width: 280px;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(255, 158, 197, 0.15);
+  border: 2px solid var(--pink-main);
+  flex-shrink: 0;
+}
+
+.tutorial-step-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* Responsive */
@@ -405,7 +702,7 @@ body::before {
   }
 
   .tab {
-    padding: 0.75rem 1.25rem;
+    padding: 0.5rem 1.25rem;
     font-size: 0.9rem;
   }
   .title {
@@ -415,6 +712,12 @@ body::before {
   .page-title {
     font-size: 2rem;
     font-family: var(--font-playfair), serif;
+    gap: 1rem;
+  }
+
+  .page-title::before,
+  .page-title::after {
+    flex: 0 0 50px;
   }
 
   .cards-grid {
@@ -431,6 +734,47 @@ body::before {
   .tutorial-title {
     font-size: 2rem;
     font-family: var(--font-playfair), serif;
+  }
+
+  .article-meta,
+  .tutorial-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .author-info {
+    width: 100%;
+  }
+
+  .publish-date {
+    width: 100%;
+    align-items: flex-start;
+  }
+
+  .tutorial-step::before {
+    left: 15px;
+    top: 32px;
+  }
+
+  .tutorial-step-number {
+    width: 32px;
+    height: 32px;
+    font-size: 0.9rem;
+  }
+
+  .tutorial-step-content {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .tutorial-step-image-wrapper {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .tutorial-steps-title {
+    font-size: 1.5rem;
   }
 }
 

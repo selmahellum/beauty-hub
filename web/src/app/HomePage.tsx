@@ -30,7 +30,7 @@ export default async function HomePage() {
 
   return (
     <div className="container">
-      <Tabs />
+      <Tabs /> <div className="squiggle" />
       <div className="homepage-content">
         {title && <h1 className="title">{title}</h1>}
         {intro && <p className="intro">{intro}</p>}

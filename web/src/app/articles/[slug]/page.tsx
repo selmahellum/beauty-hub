@@ -19,6 +19,10 @@ export default async function ArticlePage({
   }
 
   const imageUrl = urlFor(article.image)?.width(800).height(500).url();
+  const authorImageUrl = urlFor(article.author?.profileImage)
+    ?.width(60)
+    .height(60)
+    .url();
 
   return (
     <div className="container">
@@ -45,9 +49,42 @@ export default async function ArticlePage({
               ))}
             </div>
           )}
-          {article.author && (
-            <p className="article-author">Skrevet av {article.author.name}</p>
-          )}
+          <div className="article-meta">
+            {article.author && (
+              <div className="author-info">
+                {authorImageUrl && (
+                  <div className="author-image-wrapper">
+                    <Image
+                      src={authorImageUrl}
+                      alt={article.author.name}
+                      width={60}
+                      height={60}
+                      className="author-image"
+                    />
+                  </div>
+                )}
+                <span className="author-name">{article.author.name}</span>
+              </div>
+            )}
+            <div className="publish-date">
+              <span className="publish-label">Sist publisert:</span>
+              {article._updatedAt ? (
+                <span className="date-value">
+                  {new Date(article._updatedAt).toLocaleDateString('nb-NO', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                  })}{' '}
+                  {new Date(article._updatedAt).toLocaleTimeString('nb-NO', {
+                    hour: '2-digit',
+                    minute: '2-digit',
+                  })}
+                </span>
+              ) : (
+                <span className="date-value">Ikke tilgjengelig</span>
+              )}
+            </div>
+          </div>
         </article>
       </div>
     </div>

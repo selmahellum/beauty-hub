@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { HiHome } from 'react-icons/hi';
+import { BsHouseHeart } from 'react-icons/bs';
 import { HiOutlineNewspaper } from 'react-icons/hi';
 import { HiOutlineAcademicCap } from 'react-icons/hi';
 
@@ -20,7 +20,7 @@ export default function Tabs() {
   return (
     <nav className="tabs">
       <Link href="/" className={`tab ${activeTab === 'home' ? 'active' : ''}`}>
-        <HiHome className="tab-icon" />
+        <BsHouseHeart className="tab-icon" />
         Hjem
       </Link>
       <Link
