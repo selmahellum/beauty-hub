@@ -20,6 +20,7 @@ export type Product = {
   _id: string;
   name?: string;
   description?: string;
+  price?: number;
   image?: SanityImage;
   link?: string;
   brand?: { name: string };

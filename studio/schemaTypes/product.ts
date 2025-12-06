@@ -3,19 +3,19 @@ import {defineType, defineField} from 'sanity'
 export default defineType({
   name: 'product',
   title: 'Product',
-  type: 'object',
+  type: 'document',
   fields: [
     defineField({
       name: 'category',
       title: 'Category',
       type: 'string',
       options: {
-        list: ['Makeup', 'Skincare'],
+        list: ['Makeup', 'Skincare', 'Haircare', 'Tools', 'Other'],
       },
     }),
     defineField({name: 'name', title: 'Name', type: 'string'}),
     defineField({name: 'brand', title: 'Brand', type: 'reference', to: [{type: 'brand'}]}),
-    defineField({name: 'price', title: 'Price', type: 'number'}),
+    defineField({name: 'price', title: 'Price (NOK)', type: 'number'}),
     defineField({name: 'image', title: 'Product Image', type: 'image'}),
     defineField({name: 'ingredients', title: 'Ingredients', type: 'text'}),
     defineField({name: 'description', title: 'Description', type: 'text'}),
@@ -24,8 +24,15 @@ export default defineType({
   preview: {
     select: {
       title: 'name',
-      subtitle: 'category',
+      subtitle: 'brand.name',
       media: 'image',
+    },
+    prepare({title, subtitle, media}) {
+      return {
+        title: title || 'Untitled product',
+        subtitle: subtitle || '',
+        media,
+      }
     },
   },
 })

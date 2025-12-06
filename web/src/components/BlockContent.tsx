@@ -39,6 +39,9 @@ function ProductBlock({ product }: { product?: Product }) {
           {product.name && (
             <span className="block-product-name">{product.name}</span>
           )}
+          {product.price && (
+            <span className="block-product-price">{product.price} kr</span>
+          )}
           {product.description && (
             <p className="block-product-description">{product.description}</p>
           )}

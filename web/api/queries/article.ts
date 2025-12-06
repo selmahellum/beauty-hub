@@ -19,6 +19,7 @@ export const GET_ARTICLE_BY_SLUG = groq`*[_type == "article" && slug.current == 
         _id,
         name,
         description,
+        price,
         image,
         link,
         brand->{name}

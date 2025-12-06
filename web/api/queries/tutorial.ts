@@ -19,6 +19,7 @@ export const GET_TUTORIAL_BY_SLUG = groq`*[_type == "tutorial" && slug.current =
         _id,
         name,
         description,
+        price,
         image,
         link,
         brand->{name}
@@ -30,7 +31,7 @@ export const GET_TUTORIAL_BY_SLUG = groq`*[_type == "tutorial" && slug.current =
     title, 
     description, 
     image, 
-    products[]->{_id, name, description, image, link, brand->{name}}
+    products[]->{_id, name, description, price, image, link, brand->{name}}
   }, 
   author->{name, profileImage}, 
   _updatedAt
