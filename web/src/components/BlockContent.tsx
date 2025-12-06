@@ -104,9 +104,11 @@ function LinkCardBlock({ value }: { value: LinkBlockType }) {
 
 // Image Block Component
 function ImageBlockComponent({ value }: { value: ImageBlock }) {
-  const imageUrl =
-    value.asset?.url ||
-    (value.asset?._ref ? urlFor(value)?.width(800).url() : null);
+  const imageUrl = value.asset?._ref
+    ? urlFor({ _type: 'image', asset: { ...value.asset, _type: 'reference' } })
+        ?.width(800)
+        .url()
+    : value.asset?.url || null;
 
   if (!imageUrl) return null;
 
