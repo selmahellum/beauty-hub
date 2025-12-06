@@ -4,6 +4,7 @@ import { client } from '../../../../utils/client';
 import { GET_TUTORIAL_BY_SLUG } from '../../../../api/queries/tutorial';
 import Tabs from '../../../components/Tabs';
 import { urlFor } from '../../../../utils/imageUrl';
+import BlockContent from '../../../components/BlockContent';
 import type { Tutorial } from '../../../../types/types';
 import { HiOutlineExternalLink } from 'react-icons/hi';
 
@@ -45,6 +46,12 @@ export default async function TutorialPage({
           )}
           <h1 className="tutorial-title">{tutorial.title}</h1>
           {tutorial.intro && <p className="tutorial-intro">{tutorial.intro}</p>}
+
+          {tutorial.body && (
+            <div className="tutorial-body">
+              <BlockContent content={tutorial.body} />
+            </div>
+          )}
 
           {tutorial.steps && tutorial.steps.length > 0 ? (
             <div className="tutorial-steps">

@@ -10,6 +10,7 @@
     "dev:studio": "npm --prefix studio run dev"
   },
   "dependencies": {
+    "@portabletext/react": "^5.0.0",
     "@sanity/client": "^7.13.1"
   }
 }

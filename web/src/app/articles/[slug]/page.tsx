@@ -4,6 +4,7 @@ import { client } from '../../../../utils/client';
 import { GET_ARTICLE_BY_SLUG } from '../../../../api/queries/article';
 import Tabs from '../../../components/Tabs';
 import { urlFor } from '../../../../utils/imageUrl';
+import BlockContent from '../../../components/BlockContent';
 import type { Article } from '../../../../types/types';
 
 export default async function ArticlePage({
@@ -44,9 +45,7 @@ export default async function ArticlePage({
           {article.intro && <p className="article-intro">{article.intro}</p>}
           {article.body && (
             <div className="article-body">
-              {article.body.split('\n').map((paragraph, index) => (
-                <p key={index}>{paragraph}</p>
-              ))}
+              <BlockContent content={article.body} />
             </div>
           )}
           <div className="article-meta">
