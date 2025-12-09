@@ -2,7 +2,7 @@ import { groq } from 'next-sanity';
 
 export const GET_TUTORIALS = groq`*[_type == "tutorial"] | order(_createdAt desc) {
   _id, 
-  title, "Playfair Display", "Playfair Display Fallback"
+  title, 
   slug, 
   intro, 
   mainImage, 
