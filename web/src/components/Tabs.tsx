@@ -3,40 +3,65 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { BsHouseHeart } from 'react-icons/bs';
-import { HiOutlineNewspaper } from 'react-icons/hi';
-import { HiOutlineAcademicCap } from 'react-icons/hi';
+import {
+  HiOutlineNewspaper,
+  HiOutlineAcademicCap,
+  HiOutlineSparkles,
+} from 'react-icons/hi';
+
+type TabType = 'home' | 'articles' | 'tutorials' | 'products';
 
 export default function Tabs() {
   const pathname = usePathname();
 
-  // Derive activeTab directly from pathname
-  const activeTab: 'home' | 'articles' | 'tutorials' =
-    pathname === '/articles'
-      ? 'articles'
-      : pathname === '/tutorials'
-        ? 'tutorials'
-        : 'home';
+  const getActiveTab = (): TabType => {
+    if (pathname === '/articles' || pathname.startsWith('/articles/'))
+      return 'articles';
+    if (pathname === '/tutorials' || pathname.startsWith('/tutorials/'))
+      return 'tutorials';
+    if (pathname === '/products') return 'products';
+    return 'home';
+  };
+
+  const activeTab = getActiveTab();
 
   return (
-    <nav className="tabs">
-      <Link href="/" className={`tab ${activeTab === 'home' ? 'active' : ''}`}>
-        <BsHouseHeart className="tab-icon" />
-        Hjem
-      </Link>
-      <Link
-        href="/articles"
-        className={`tab ${activeTab === 'articles' ? 'active' : ''}`}
-      >
-        <HiOutlineNewspaper className="tab-icon" />
-        Artikler
-      </Link>
-      <Link
-        href="/tutorials"
-        className={`tab ${activeTab === 'tutorials' ? 'active' : ''}`}
-      >
-        <HiOutlineAcademicCap className="tab-icon" />
-        Tutorials
-      </Link>
-    </nav>
+    <header className="top-menu">
+      <div className="top-menu-inner">
+        <Link href="/" className="top-menu-logo">
+          BeautyHub
+        </Link>
+        <nav className="top-menu-nav">
+          <Link
+            href="/"
+            className={`top-menu-link ${activeTab === 'home' ? 'active' : ''}`}
+          >
+            <BsHouseHeart className="top-menu-icon" />
+            <span>Hjem</span>
+          </Link>
+          <Link
+            href="/articles"
+            className={`top-menu-link ${activeTab === 'articles' ? 'active' : ''}`}
+          >
+            <HiOutlineNewspaper className="top-menu-icon" />
+            <span>Artikler</span>
+          </Link>
+          <Link
+            href="/tutorials"
+            className={`top-menu-link ${activeTab === 'tutorials' ? 'active' : ''}`}
+          >
+            <HiOutlineAcademicCap className="top-menu-icon" />
+            <span>Tutorials</span>
+          </Link>
+          <Link
+            href="/products"
+            className={`top-menu-link ${activeTab === 'products' ? 'active' : ''}`}
+          >
+            <HiOutlineSparkles className="top-menu-icon" />
+            <span>Produkter</span>
+          </Link>
+        </nav>
+      </div>
+    </header>
   );
 }

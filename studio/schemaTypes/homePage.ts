@@ -16,16 +16,11 @@ export default defineType({
       type: 'text',
     }),
     defineField({
-      name: 'articles',
-      title: 'Articles',
+      name: 'featuredContent',
+      title: 'Fremhevet innhold',
+      description: 'Velg artikler og/eller tutorials som skal vises på forsiden',
       type: 'array',
-      of: [{type: 'reference', to: [{type: 'article'}]}],
-    }),
-    defineField({
-      name: 'tutorials',
-      title: 'Tutorials',
-      type: 'array',
-      of: [{type: 'reference', to: [{type: 'tutorial'}]}],
+      of: [{type: 'reference', to: [{type: 'article'}, {type: 'tutorial'}]}],
     }),
   ],
 })

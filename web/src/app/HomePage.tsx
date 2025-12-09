@@ -2,7 +2,7 @@ import { client } from '../../utils/client';
 import GET_HOMEPAGE from '../../api/queries/homepage';
 import Tabs from '../components/Tabs';
 import Card from '../components/Card';
-import type { HomePage } from '../../types/types';
+import type { HomePage, Article, Tutorial } from '../../types/types';
 
 async function getHomepageData() {
   try {
@@ -26,38 +26,31 @@ export default async function HomePage() {
     );
   }
 
-  const { title, intro, articles = [], tutorials = [] } = homepage;
+  const { title, intro, featuredContent = [] } = homepage;
 
   return (
     <div className="container">
-      <Tabs /> <div className="squiggle" />
+      <Tabs />
       <div className="homepage-content">
         {title && <h1 className="title">{title}</h1>}
         {intro && <p className="intro">{intro}</p>}
 
-        <div className="featured-section">
-          {articles.length > 0 && (
+        {featuredContent.length > 0 && (
+          <div className="featured-section">
             <section className="featured-items">
-              <h2 className="section-title">Aktuelt</h2>
+              <h2 className="section-title">Fremhevet innhold</h2>
               <div className="cards-grid">
-                {articles.slice(0, 3).map((article) => (
-                  <Card key={article._id} item={article} type="article" />
+                {featuredContent.map((item) => (
+                  <Card
+                    key={item._id}
+                    item={item as Article | Tutorial}
+                    type={item._type === 'article' ? 'article' : 'tutorial'}
+                  />
                 ))}
               </div>
             </section>
-          )}
-
-          {tutorials.length > 0 && (
-            <section className="featured-items">
-              <h2 className="section-title">Populære tutorials</h2>
-              <div className="cards-grid">
-                {tutorials.slice(0, 3).map((tutorial) => (
-                  <Card key={tutorial._id} item={tutorial} type="tutorial" />
-                ))}
-              </div>
-            </section>
-          )}
-        </div>
+          </div>
+        )}
       </div>
     </div>
   );

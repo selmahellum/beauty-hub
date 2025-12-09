@@ -1,0 +1,113 @@
+/* Top Menu Bar */
+.top-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 100;
+  background: var(--maroon-dark);
+  padding: 0.75rem 1rem;
+  padding-bottom: 1rem;
+}
+
+.top-menu::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 0;
+  right: 0;
+  height: 16px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 16' preserveAspectRatio='none'%3E%3Cpath d='M0 0 H40 V8 Q30 16 20 8 Q10 0 0 8 Z' fill='%238b1538'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-size: 40px 16px;
+}
+
+.top-menu-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.top-menu-logo {
+  font-family: var(--font-playfair), serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--pink-light);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+}
+
+.top-menu-logo:hover {
+  color: var(--white);
+}
+
+.top-menu-nav {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.top-menu-link {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  color: var(--pink-light);
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-radius: 20px;
+  transition: all 0.2s ease;
+}
+
+.top-menu-icon {
+  font-size: 1.1rem;
+}
+
+.top-menu-link:hover {
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.top-menu-link.active {
+  color: var(--maroon-dark);
+  background: var(--white);
+  font-weight: 600;
+}
+
+.top-menu-link.active .top-menu-icon {
+  color: var(--maroon-dark);
+}
+
+/* Mobile menu */
+@media (max-width: 600px) {
+  .top-menu {
+    padding: 0.5rem 1rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .top-menu-logo {
+    font-size: 1.25rem;
+  }
+
+  .top-menu-nav {
+    gap: 0.25rem;
+  }
+
+  .top-menu-link {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.8rem;
+  }
+
+  .top-menu-link span {
+    display: none;
+  }
+
+  .top-menu-icon {
+    font-size: 1.2rem;
+  }
+}

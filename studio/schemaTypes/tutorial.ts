@@ -17,6 +17,19 @@ export default defineType({
       options: {source: 'title', maxLength: 96},
     }),
     defineField({
+      name: 'category',
+      title: 'Kategori',
+      type: 'string',
+      options: {
+        list: [
+          {title: 'Makeup', value: 'makeup'},
+          {title: 'Skincare', value: 'skincare'},
+          {title: 'Other', value: 'other'},
+        ],
+        layout: 'radio',
+      },
+    }),
+    defineField({
       name: 'intro',
       title: 'Introduction',
       type: 'text',

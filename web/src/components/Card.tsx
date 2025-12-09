@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { urlFor } from '../../utils/imageUrl';
+import { getCategoryLabel } from '../utils/categoryUtils';
 import type { Article, Tutorial } from '../../types/types';
 
 interface CardProps {
@@ -9,10 +10,12 @@ interface CardProps {
 }
 
 export default function Card({ item, type }: CardProps) {
-  const image = type === 'article' ? (item as Article).image : (item as Tutorial).mainImage;
+  const image =
+    type === 'article' ? (item as Article).image : (item as Tutorial).mainImage;
   const imageUrl = urlFor(image)?.width(400).height(300).url();
   const slug = item.slug?.current;
   const href = slug ? `/${type}s/${slug}` : '#';
+  const categoryLabel = getCategoryLabel(item.category);
 
   const cardContent = (
     <>
@@ -29,6 +32,11 @@ export default function Card({ item, type }: CardProps) {
           <div className="card-image-placeholder">
             <span className="card-placeholder-icon">✨</span>
           </div>
+        )}
+        {categoryLabel && (
+          <span className={`card-category-tag category-${item.category}`}>
+            {categoryLabel}
+          </span>
         )}
       </div>
       <div className="card-content">
@@ -48,4 +56,3 @@ export default function Card({ item, type }: CardProps) {
     </Link>
   );
 }
-

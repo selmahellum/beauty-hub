@@ -1,0 +1,118 @@
+/* Responsive */
+@media (max-width: 768px) {
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .page-title {
+    font-size: 2rem;
+    font-family: var(--font-playfair), serif;
+    gap: 1rem;
+  }
+
+  .page-title::before,
+  .page-title::after {
+    flex: 0 0 50px;
+  }
+
+  .cards-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .article-detail,
+  .tutorial-detail {
+    padding: 2rem 1.5rem;
+  }
+
+  .article-title,
+  .tutorial-title {
+    font-size: 2rem;
+    font-family: var(--font-playfair), serif;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .article-meta,
+  .tutorial-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .author-info {
+    width: 100%;
+  }
+
+  .publish-date {
+    width: 100%;
+    align-items: flex-start;
+  }
+
+  .tutorial-step::before {
+    left: 15px;
+    top: 32px;
+  }
+
+  .tutorial-step-number {
+    width: 32px;
+    height: 32px;
+    font-size: 0.9rem;
+  }
+
+  .tutorial-step-content {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .tutorial-step-image-wrapper {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .tutorial-steps-title {
+    font-size: 1.5rem;
+  }
+
+  /* Block content responsive */
+  .block-heading-2 {
+    font-size: 1.5rem;
+  }
+
+  .block-heading-3 {
+    font-size: 1.2rem;
+  }
+
+  .block-product-card {
+    margin: 1.5rem 0;
+  }
+
+  .block-product-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .block-product-image-wrapper {
+    max-width: 80px;
+    max-height: 80px;
+  }
+
+  .block-link-card {
+    flex-direction: column;
+    margin: 1.5rem 0;
+  }
+
+  .block-link-image-wrapper {
+    width: 100%;
+    height: 150px;
+  }
+
+  .block-link-icon-wrapper {
+    padding: 0.75rem;
+    justify-content: flex-end;
+  }
+}
+

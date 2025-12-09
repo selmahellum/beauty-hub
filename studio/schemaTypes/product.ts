@@ -7,10 +7,17 @@ export default defineType({
   fields: [
     defineField({
       name: 'category',
-      title: 'Category',
+      title: 'Kategori',
       type: 'string',
       options: {
-        list: ['Makeup', 'Skincare', 'Haircare', 'Tools', 'Other'],
+        list: [
+          {title: 'Øyne', value: 'eyes'},
+          {title: 'Lepper', value: 'lips'},
+          {title: 'Base', value: 'base'},
+          {title: 'Hudpleie', value: 'skincare'},
+          {title: 'Annet', value: 'other'},
+        ],
+        layout: 'radio',
       },
     }),
     defineField({name: 'name', title: 'Name', type: 'string'}),
