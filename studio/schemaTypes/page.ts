@@ -36,7 +36,12 @@ export default defineType({
         hotspot: true,
       },
     }),
-
+    defineField({
+      name: 'author',
+      title: 'Forfatter',
+      type: 'reference',
+      to: [{type: 'person'}],
+    }),
     defineField({
       name: 'modules',
       title: 'Moduler',
@@ -48,11 +53,17 @@ export default defineType({
         defineArrayMember({type: 'relatedContent'}),
       ],
     }),
-    defineField({
-      name: 'author',
-      title: 'Forfatter',
-      type: 'reference',
-      to: [{type: 'person'}],
-    }),
   ],
+  preview: {
+    select: {
+      title: 'title',
+      slug: 'slug.current',
+    },
+    prepare({title, slug}) {
+      return {
+        title: title || 'Untitled Page',
+        subtitle: slug ? `/${slug}` : 'No slug',
+      }
+    },
+  },
 })
