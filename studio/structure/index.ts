@@ -130,7 +130,7 @@ export const structure: StructureResolver = (S) =>
                   .icon(category.icon)
                   .child(
                     S.documentList()
-                      .title(`${category.title} produkter`)
+                      .title(`${category.title} - produkter`)
                       .filter('_type == "product" && category == $category')
                       .params({category: category.id}),
                   ),

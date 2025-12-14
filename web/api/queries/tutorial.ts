@@ -7,6 +7,7 @@ export const GET_TUTORIALS = groq`*[_type == "tutorial"] | order(_createdAt desc
   intro, 
   mainImage, 
   category,
+  difficulty,
   author->{name},
   _createdAt
 }`;
@@ -18,6 +19,7 @@ export const GET_TUTORIALS_BY_CATEGORY = groq`*[_type == "tutorial" && ($categor
   intro, 
   mainImage, 
   category,
+  difficulty,
   author->{name},
   _createdAt
 }`;
@@ -26,7 +28,8 @@ export const GET_TUTORIAL_BY_SLUG = groq`*[_type == "tutorial" && slug.current =
   _id, 
   title, 
   slug, 
-  intro, 
+  intro,
+  difficulty,
   body[]{
     ...,
     _type == "image" => {

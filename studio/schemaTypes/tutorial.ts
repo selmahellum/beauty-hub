@@ -1,4 +1,5 @@
 import {defineType, defineField} from 'sanity'
+import {HeartRatingInput} from '../components/inputs/HeartRatingInput'
 
 export default defineType({
   name: 'tutorial',
@@ -27,6 +28,16 @@ export default defineType({
           {title: 'Other', value: 'other'},
         ],
         layout: 'radio',
+      },
+    }),
+    defineField({
+      name: 'difficulty',
+      title: 'Vanskelighetsgrad',
+      type: 'number',
+      description: 'Velg vanskelighetsgrad fra 1 til 5 hjerter',
+      validation: (Rule) => Rule.min(1).max(5).integer(),
+      components: {
+        input: HeartRatingInput,
       },
     }),
     defineField({

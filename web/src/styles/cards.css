@@ -124,3 +124,8 @@
 .card-category-tag {
   z-index: 2;
 }
+
+/* Card Difficulty Rating */
+.card-difficulty {
+  margin-bottom: 0.5rem;
+}

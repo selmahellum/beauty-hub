@@ -99,6 +99,7 @@ export type Tutorial = {
   mainImage?: SanityImage;
   author?: Author;
   category?: Category;
+  difficulty?: number;
   _updatedAt?: string;
   _createdAt?: string;
   steps?: TutorialStep[];

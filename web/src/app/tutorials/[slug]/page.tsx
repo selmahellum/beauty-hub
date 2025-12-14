@@ -5,6 +5,7 @@ import { GET_TUTORIAL_BY_SLUG } from '../../../../api/queries/tutorial';
 import Tabs from '../../../components/Tabs';
 import { urlFor } from '../../../../utils/imageUrl';
 import BlockContent from '../../../components/BlockContent';
+import HeartRating from '../../../components/HeartRating';
 import type { Tutorial } from '../../../../types/types';
 import { HiOutlineExternalLink } from 'react-icons/hi';
 
@@ -46,6 +47,14 @@ export default async function TutorialPage({
           )}
           <h1 className="tutorial-title">{tutorial.title}</h1>
           {tutorial.intro && <p className="tutorial-intro">{tutorial.intro}</p>}
+          {tutorial.difficulty && (
+            <div className="tutorial-difficulty">
+              <span className="tutorial-difficulty-label">
+                Vanskelighetsgrad:
+              </span>
+              <HeartRating rating={tutorial.difficulty} size="medium" />
+            </div>
+          )}
 
           {tutorial.body && (
             <div className="tutorial-body">

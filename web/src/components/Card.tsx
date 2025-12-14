@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { urlFor } from '../../utils/imageUrl';
 import { getCategoryLabel } from '../utils/categoryUtils';
+import HeartRating from './HeartRating';
 import type { Article, Tutorial } from '../../types/types';
 
 interface CardProps {
@@ -16,6 +17,8 @@ export default function Card({ item, type }: CardProps) {
   const slug = item.slug?.current;
   const href = slug ? `/${type}s/${slug}` : '#';
   const categoryLabel = getCategoryLabel(item.category);
+  const difficulty =
+    type === 'tutorial' ? (item as Tutorial).difficulty : undefined;
 
   const cardContent = (
     <>
@@ -41,6 +44,11 @@ export default function Card({ item, type }: CardProps) {
       </div>
       <div className="card-content">
         <h3 className="card-title">{item.title}</h3>
+        {difficulty && (
+          <div className="card-difficulty">
+            <HeartRating rating={difficulty} size="small" />
+          </div>
+        )}
         {item.intro && <p className="card-intro">{item.intro}</p>}
       </div>
     </>
