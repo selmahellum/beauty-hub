@@ -7,9 +7,10 @@ import {
   HiOutlineNewspaper,
   HiOutlineAcademicCap,
   HiOutlineSparkles,
+  HiOutlineDocumentText,
 } from 'react-icons/hi';
 
-type TabType = 'home' | 'articles' | 'tutorials' | 'products';
+type TabType = 'home' | 'articles' | 'tutorials' | 'products' | 'pages';
 
 export default function Tabs() {
   const pathname = usePathname();
@@ -20,6 +21,7 @@ export default function Tabs() {
     if (pathname === '/tutorials' || pathname.startsWith('/tutorials/'))
       return 'tutorials';
     if (pathname === '/products') return 'products';
+    if (pathname === '/pages' || pathname.startsWith('/pages/')) return 'pages';
     return 'home';
   };
 
@@ -59,6 +61,13 @@ export default function Tabs() {
           >
             <HiOutlineSparkles className="top-menu-icon" />
             <span>Produkter</span>
+          </Link>
+          <Link
+            href="/pages"
+            className={`top-menu-link ${activeTab === 'pages' ? 'active' : ''}`}
+          >
+            <HiOutlineDocumentText className="top-menu-icon" />
+            <span>Temasider</span>
           </Link>
         </nav>
       </div>

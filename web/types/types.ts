@@ -122,3 +122,49 @@ export type HomePage = {
   intro?: string;
   featuredContent?: FeaturedContent[];
 };
+
+export type TextModule = {
+  _type: 'textModule';
+  _key: string;
+  content?: BlockContent;
+};
+
+export type TipBox = {
+  _type: 'tipBox';
+  _key: string;
+  title?: string;
+  intro?: string;
+  image?: SanityImage;
+};
+
+export type ProductList = {
+  _type: 'productList';
+  _key: string;
+  title?: string;
+  products?: Product[];
+};
+
+export type RelatedContent = {
+  _type: 'relatedContent';
+  _key: string;
+  title?: string;
+  items?: (Article | Tutorial)[];
+};
+
+export type PageModule = TextModule | TipBox | ProductList | RelatedContent;
+
+export type Page = {
+  _id: string;
+  _type?: string;
+  title: string;
+  slug?: { current: string };
+  intro?: string;
+  mainImage?: SanityImage;
+  _updatedAt?: string;
+  author?: {
+    _id: string;
+    name: string;
+    profileImage?: SanityImage;
+  };
+  modules?: PageModule[];
+};

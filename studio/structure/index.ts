@@ -103,6 +103,12 @@ export const structure: StructureResolver = (S) =>
               ),
             ]),
         ),
+      // 5. PAGES
+      S.listItem()
+        .id('pages')
+        .title('Temasider')
+        .icon(DocumentIcon)
+        .child(S.documentTypeList('page').title('Alle sider')),
 
       S.divider(),
 
@@ -137,4 +143,6 @@ export const structure: StructureResolver = (S) =>
               ),
             ]),
         ),
+
+      S.divider(),
     ])
