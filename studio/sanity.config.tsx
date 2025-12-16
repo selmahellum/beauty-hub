@@ -1,0 +1,89 @@
+import {visionTool} from '@sanity/vision'
+import {buildLegacyTheme, defineConfig} from 'sanity'
+import {structureTool} from 'sanity/structure'
+import {schemaTypes} from './schemaTypes'
+import {structure} from './structure'
+
+const StudioIcon = () => (
+  <svg
+    width="1em"
+    height="1em"
+    viewBox="0 0 244 244"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M0 0H244V244H0V0Z" fill="#FFD6E8" />
+    <path
+      d="M15.6404 64.584C15.6404 53.0628 20.734 43.5426 30.9213 36.0234C41.1085 28.383 54.5702 24.5628 71.3064 24.5628C80.1596 24.5628 88.1032 25.4723 95.1372 27.2915C102.171 28.9894 107.75 31.1723 111.873 33.8404C115.997 36.5085 119.453 39.6011 122.243 43.1181C126.851 49.1819 129.095 55.9734 128.973 63.4925C128.973 70.8904 126.063 77.5 120.241 83.3213C114.42 89.1426 107.386 92.1745 99.1394 92.417C109.448 93.1447 118.362 96.5404 125.881 102.604C133.521 108.668 137.341 116.309 137.341 125.526C137.341 137.653 132.672 147.113 123.334 153.904C113.996 160.696 102.596 164.091 89.134 164.091C75.7936 164.091 66.6979 162.333 61.8468 158.816L67.4862 143.535C72.8223 146.324 79.0074 147.719 86.0415 147.719C93.1968 147.719 99.0181 145.657 103.505 141.534C107.993 137.289 110.236 131.711 110.236 124.798C110.236 117.885 107.144 112.064 100.959 107.334C94.8947 102.604 86.5872 100.239 76.0362 100.239L77.6734 86.7777C84.95 86.7777 91.0745 85.0798 96.0468 81.684C101.14 78.167 103.748 72.9521 103.869 66.0394C104.112 59.1266 101.019 53.3053 94.5915 48.5755C87.6787 43.6032 78.2192 41.117 66.2128 41.117C58.3298 41.117 50.6287 43.1787 43.1096 47.3021C35.5904 51.3043 31.8309 56.7011 31.8309 63.4925C31.8309 66.767 33.1649 69.5564 35.833 71.8606C38.5011 74.0436 42.0181 75.3777 46.384 75.8628L44.383 89.3245C35.166 88.9606 28.0713 86.3532 23.0989 81.5021C18.1266 76.6511 15.6404 71.0117 15.6404 64.584Z"
+      fill="#8B1538"
+    />
+    <path
+      d="M205.499 78.4702C206.227 77.5 208.531 76.5904 212.412 75.7415C216.414 74.7713 220.173 74.2862 223.691 74.2862C227.208 74.2862 230.118 74.7713 232.422 75.7415L214.595 212.723H189.854L196.949 151.236L194.584 151.964C183.427 155.238 173.3 158.452 164.204 161.605L161.658 181.616C158.747 203.082 148.681 213.815 131.46 213.815C125.275 213.815 120.484 211.996 117.088 208.357C113.693 204.598 111.995 199.807 111.995 193.986C111.995 181.01 121.151 169.306 139.464 158.877L148.742 79.9255C151.046 78.3489 154.078 77.0149 157.837 75.9234C161.597 74.8319 165.235 74.2862 168.752 74.2862C172.269 74.2862 174.573 74.3468 175.665 74.4681L166.205 146.87C173.603 144.202 182.942 141.352 194.22 138.32L198.586 137.229L205.499 78.4702Z"
+      fill="#8B1538"
+    />
+  </svg>
+)
+const props = {
+  '--my-white': '#fff',
+  '--my-black': '#1a1a1a',
+  '--my-brand': '#8b1538',
+  '--my-pink': '#ff9ec5',
+  '--my-pink-light': '#fff5f8',
+  '--my-pink-medium': '#ffd6e8',
+  '--my-maroon': '#8b1538',
+  '--my-maroon-light': '#a01a42',
+  '--my-red': '#db4437',
+  '--my-yellow': '#f4b400',
+  '--my-green': '#0f9d58',
+}
+
+const beautyTheme = buildLegacyTheme({
+  /* Base theme colors */
+  '--black': props['--my-black'],
+  '--white': props['--my-white'],
+
+  '--gray': '#666',
+  '--gray-base': '#666',
+
+  '--component-bg': props['--my-pink-light'],
+  '--component-text-color': props['--my-black'],
+
+  /* Brand */
+  '--brand-primary': props['--my-maroon'],
+
+  /* Default button */
+  '--default-button-color': props['--my-maroon'],
+  '--default-button-primary-color': props['--my-maroon'],
+  '--default-button-success-color': props['--my-green'],
+  '--default-button-warning-color': props['--my-yellow'],
+  '--default-button-danger-color': props['--my-red'],
+
+  /* State */
+  '--state-info-color': props['--my-pink'],
+  '--state-success-color': props['--my-green'],
+  '--state-warning-color': props['--my-yellow'],
+  '--state-danger-color': props['--my-red'],
+
+  /* Navbar */
+  '--main-navigation-color': props['--my-maroon'],
+  '--main-navigation-color--inverted': props['--my-white'],
+
+  /* Focus */
+  '--focus-color': props['--my-pink'],
+})
+
+export default defineConfig({
+  name: 'default',
+  title: 'Beauty Hub Studio 💋',
+  icon: StudioIcon,
+  projectId: 'kyj4zlry',
+  dataset: 'production',
+
+  plugins: [structureTool({structure}), visionTool()],
+
+  schema: {
+    types: schemaTypes,
+  },
+
+  theme: beautyTheme,
+})
