@@ -3,6 +3,7 @@ import {buildLegacyTheme, defineConfig} from 'sanity'
 import {structureTool} from 'sanity/structure'
 import {schemaTypes} from './schemaTypes'
 import {structure} from './structure'
+import {media} from 'sanity-plugin-media'
 
 const StudioIcon = () => (
   <svg
@@ -79,7 +80,7 @@ export default defineConfig({
   projectId: 'kyj4zlry',
   dataset: 'production',
 
-  plugins: [structureTool({structure}), visionTool()],
+  plugins: [structureTool({structure}), visionTool(), media()],
 
   schema: {
     types: schemaTypes,
