@@ -1,10 +1,8 @@
-import {defineConfig} from 'sanity'
-import {structureTool} from 'sanity/structure'
 import {visionTool} from '@sanity/vision'
+import {buildLegacyTheme, defineConfig} from 'sanity'
+import {structureTool} from 'sanity/structure'
 import {schemaTypes} from './schemaTypes'
 import {structure} from './structure'
-import {buildLegacyTheme} from 'sanity'
-import {createElement} from 'react'
 
 const StudioIcon = () => (
   <svg
