@@ -132,7 +132,16 @@ export default async function TutorialPage({
                                                 {product.name}
                                               </span>
                                             )}
-                                          </div>
+                                          </div>{' '}
+                                          {product.productColor?.value && (
+                                            <div
+                                              className="product-color-circle"
+                                              style={{
+                                                backgroundColor:
+                                                  product.productColor.value,
+                                              }}
+                                            />
+                                          )}
                                           {productImageUrl && (
                                             <div className="product-card-image-wrapper">
                                               <Image

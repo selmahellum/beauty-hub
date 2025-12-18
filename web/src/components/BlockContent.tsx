@@ -45,6 +45,12 @@ function ProductBlock({ product }: { product?: Product }) {
           {product.description && (
             <p className="block-product-description">{product.description}</p>
           )}
+          {product.productColor?.hex && (
+            <div
+              className="product-color-circle"
+              style={{ backgroundColor: product.productColor.value }}
+            />
+          )}
         </div>
         {productImageUrl && (
           <div className="block-product-image-wrapper">

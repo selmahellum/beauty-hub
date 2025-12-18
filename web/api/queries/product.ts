@@ -8,6 +8,7 @@ export const GET_PRODUCTS = groq`*[_type == "product"] | order(name asc) {
   image, 
   category,
   link,
+  productColor->{value},
   brand->{name},
   _createdAt
 }`;
@@ -20,6 +21,7 @@ export const GET_PRODUCTS_BY_CATEGORY = groq`*[_type == "product" && ($category 
   image, 
   category,
   link,
+  productColor->{value},
   brand->{name},
   _createdAt
 }`;

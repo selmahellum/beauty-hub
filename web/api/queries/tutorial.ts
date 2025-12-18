@@ -45,6 +45,7 @@ export const GET_TUTORIAL_BY_SLUG = groq`*[_type == "tutorial" && slug.current =
         price,
         image,
         link,
+        productColor->{value},
         brand->{name}
       }
     }
@@ -54,7 +55,7 @@ export const GET_TUTORIAL_BY_SLUG = groq`*[_type == "tutorial" && slug.current =
     title, 
     description, 
     image, 
-    products[]->{_id, name, description, price, image, link, brand->{name}}
+    products[]->{_id, name, description, price, image, link, productColor, brand->{name}}
   }, 
   author->{name, profileImage}, 
   _updatedAt

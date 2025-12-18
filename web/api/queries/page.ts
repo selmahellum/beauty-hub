@@ -31,6 +31,7 @@ export const GET_PAGE_BY_SLUG = groq`*[_type == "page" && slug.current == $slug]
             price,
             image,
             link,
+            productColor->{value},
             brand->{name}
           }
         }
@@ -50,6 +51,7 @@ export const GET_PAGE_BY_SLUG = groq`*[_type == "page" && slug.current == $slug]
         price,
         image,
         link,
+        productColor,
         brand->{name},
         category
       }
@@ -79,4 +81,3 @@ export const GET_ALL_PAGES = groq`*[_type == "page"] | order(_createdAt desc) {
   intro,
   mainImage
 }`;
-

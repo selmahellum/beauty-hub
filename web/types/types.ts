@@ -30,6 +30,10 @@ export type Product = {
   price?: number;
   image?: SanityImage;
   link?: string;
+  productColor?: {
+    label: string;
+    value: string;
+  };
   brand?: { name: string };
   category?: ProductCategory;
   _createdAt?: string;

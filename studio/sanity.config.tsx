@@ -4,6 +4,7 @@ import {structureTool} from 'sanity/structure'
 import {schemaTypes} from './schemaTypes'
 import {structure} from './structure'
 import {media} from 'sanity-plugin-media'
+import {simplerColorInput} from 'sanity-plugin-simpler-color-input'
 
 const StudioIcon = () => (
   <svg
@@ -80,7 +81,7 @@ export default defineConfig({
   projectId: 'kyj4zlry',
   dataset: 'production',
 
-  plugins: [structureTool({structure}), visionTool(), media()],
+  plugins: [structureTool({structure}), visionTool(), media(), simplerColorInput()],
 
   schema: {
     types: schemaTypes,

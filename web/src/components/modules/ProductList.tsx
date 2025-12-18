@@ -19,6 +19,7 @@ export default function ProductListModule({ module }: ProductListProps) {
         <div className="product-list-module-list">
           {module.products.map((product) => {
             if (!product) return null;
+            console.log(product.productColor?.value);
             const productImageUrl = product.image
               ? urlFor(product.image)?.height(80).fit('max').url()
               : null;
@@ -51,7 +52,15 @@ export default function ProductListModule({ module }: ProductListProps) {
                       <span className="product-name">{product.name}</span>
                     )}
                     {product.price && (
-                      <span className="product-card-price">{product.price} NOK</span>
+                      <span className="product-card-price">
+                        {product.price} NOK
+                      </span>
+                    )}
+                    {product.productColor?.value && (
+                      <div
+                        className="product-color-circle"
+                        style={{ backgroundColor: product.productColor.value }}
+                      />
                     )}
                   </div>
                   {productImageUrl && (
@@ -75,4 +84,3 @@ export default function ProductListModule({ module }: ProductListProps) {
     </div>
   );
 }
-

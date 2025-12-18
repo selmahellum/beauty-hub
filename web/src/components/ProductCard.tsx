@@ -51,6 +51,12 @@ export default function ProductCard({ product }: ProductCardProps) {
             {product.price && (
               <span className="product-list-price">{product.price} kr</span>
             )}
+            {product.productColor?.value && (
+              <div
+                className="product-color-circle"
+                style={{ backgroundColor: product.productColor.value }}
+              />
+            )}
           </div>
         </div>
       </div>
